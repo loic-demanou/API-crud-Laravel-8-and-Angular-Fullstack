@@ -1,0 +1,34 @@
+
+
+<button class="btn btn-primary my-4" id="btn1" (click)="show()">+ Create news</button>
+<form class="mb-5" (ngSubmit)="onSubmit(f)" #f= "ngForm" id="form">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" name="title" [(ngModel)]="topicality.title" required>
+  </div>
+  <div class="form-group">
+    <label for="content">Content</label>
+    <input type="text" class="form-control" name="content" [(ngModel)]="topicality.content" required>
+  </div>
+  <button type="submit" class="btn btn-dark" [disabled]="f.invalid">Submit</button>
+
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let topicality of topicalities">
+      <td>{{ topicality.id }}</td>
+      <td>{{ topicality.title }}</td>
+      <td>{{ topicality.content }}</td>
+      <td><button class="btn btn-danger btn-sm" (click)="onDelete(topicality.id)">delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+
